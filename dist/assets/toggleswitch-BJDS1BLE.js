@@ -1,0 +1,115 @@
+import{At as e,D as t,Et as n,Ht as r,It as i,Mt as a,Nt as o,Ot as s,P as c,Pt as l,St as u,Tt as d,Vt as f,Wt as p,Y as m,_n as h,bt as g,en as _,gt as v,ht as y,jt as b,kt as x,ln as S,mn as C,mt as w,r as T,rn as E,un as D,vt as O,yt as k}from"./src-FBo9u_Ll.js";var A=(e,t={})=>Object.entries(t).reduce((e,[t,n])=>e.replace(`{${t}}`,String(n)),e),j=(e=A)=>{let t=i(f(e(`validation.required`)),r(),n(e(`validation.required`)),u(1024,e(`validation.maxLen`,{maxLen:1024}))),a=i(f(e(`validation.required`)),r(),u(1024,e(`validation.maxLen`,{maxLen:1024}))),o=i(f(e(`validation.required`)),n(e(`validation.required`))),s=i(x(e(`validation.required`)),k(e(`validation.dataTypeInt`)));return{RequiredStringSchema:t,StringSchema:a,DateStringSchema:o,IntSchema:s,IdSchema:i(s,d(1,e(`validation.minVal`,{minVal:1})))}},M=e=>e,ee=e=>typeof e!=`object`||!e||Array.isArray(e)?e:{...e,icon:e.icon??null},N=(t=A)=>{let{DateStringSchema:n,IdSchema:a,RequiredStringSchema:c}=j(t),d=s(i(f(),r(),u(250,t(`validation.maxLen`,{maxLen:250})))),p=e({id:a,name:c,path:f(),descr:c,section:c,icon:d,menu_available:v(),is_active:v(),created_at:n,updated_at:n});return{ApplicationRouteSchema:p,ApplicationRouteKeySchema:l(p,[`id`]),ApplicationRouteUpdSchema:o(l(p,[`descr`,`section`,`icon`])),ApplicationRouteSyncResultSchema:e({registered:x(),deactivated:x()})}},P=(e,t)=>a(t.ApplicationRouteSchema,ee(e)),F=(e,t)=>a(t.ApplicationRouteSyncResultSchema,e),I=`/application-routes`,L=(e,t=A)=>{let n=N(t);return{...T({api:M(e),basePath:I,serviceName:`ApplicationRoute`,getKeyValue:e=>e.id,fromListDTO:e=>P(e,n),fromDetailDTO:e=>P(e,n)}),sync:async t=>F(await e.post(`${I}/sync`,{items:[...t]}),n)}},R=e=>typeof e==`object`&&!!e&&!Array.isArray(e),z=e=>R(e)?{...e,icon:e.icon??null,route_name:e.route_name??null,application_routes_ref:e.application_routes_ref??null}:e,B=e=>{if(!R(e))return e;let t=Array.isArray(e.children)?e.children.map(B):null;return{...e,icon:e.icon??null,children:t}},te=e=>R(e)?{...e,icon:e.icon??null}:e,V=(t,a=A)=>{let{DateStringSchema:c,IdSchema:d,IntSchema:p}=j(a),m=d,h=i(f(a(`validation.required`)),r(),n(a(`validation.required`)),u(250,a(`validation.maxLen`,{maxLen:250}))),_=s(i(f(),r(),u(250,a(`validation.maxLen`,{maxLen:250})))),b=e({keys:e({id:d}),descr:f()}),x=e({id:m,role_id:s(t),user_id:s(d),parent_id:s(d),route_id:s(d),caption:h,icon:_,sort_order:p,is_active:v(),created_at:c,updated_at:c}),S=l(x,[`id`]),C=e({id:m,caption:h,route:f(),icon:_,children:s(y(g(()=>C)))}),w=e({id:m,role_id:s(t),users_ref:s(b),main_menus_ref:s(b),application_routes_ref:s(b),route_name:s(f()),caption:h,icon:_,sort_order:p,is_active:v(),created_at:c,updated_at:c}),T=e({role_id:s(t),user_id:s(d),parent_id:s(d),route_id:s(d),caption:h,icon:_,sort_order:p,is_active:v()}),E=o(T);return{MainMenuIdSchema:m,MainMenuCaptionSchema:h,MainMenuSchema:x,MainMenuKeySchema:S,MenuItemSchema:C,MainMenuForUserSchema:C,MainMenuListSchema:w,MainMenuNewSchema:T,MainMenuUpdSchema:E,MainMenuUpdateSchema:e({key:S,model:E}),MainMenuRouteOptionSchema:e({id:d,name:f(),path:f(),descr:f(),section:f(),icon:_})}},H=(e,t)=>a(t.MainMenuSchema,z(e)),U=(e,t)=>a(t.MainMenuListSchema,z(e)),W=(e,t)=>a(t.MainMenuForUserSchema,B(e)),G=(e,t)=>a(t.MainMenuRouteOptionSchema,te(e)),K=`/main-menus`,q=(e,t,n=A)=>{let r=V(t,n);return{...T({api:M(e),basePath:K,serviceName:`MainMenu`,getKeyValue:e=>e.id,fromListDTO:e=>U(e,r),fromDetailDTO:e=>H(e,r)}),forUser:async()=>(await e.get(`${K}/for-user`)).map(e=>W(e,r)),routeAutocomplete:async(t,n=20)=>{let i=new URLSearchParams({q:t.trim(),limit:String(n)});return(await e.get(`${K}/routes/autocomplete?${i.toString()}`)).map(e=>G(e,r))}}},ne=(t=A)=>{let{DateStringSchema:n,IdSchema:r,RequiredStringSchema:a,StringSchema:o}=j(t),c=e({column:a,field:a,old:p(),new:p(),old_description:b(s(o)),new_description:b(s(o))}),l=e({id:r,changed_at:n,operation:a,changed_by:s(o),changes:y(c)}),u=e({id:r,changed_at:O(t(`validation.required`)),operation:a,changed_by:s(o),changes:y(c)}),f=i(x(t(`validation.required`)),k(t(`validation.dataTypeInt`)),d(0,t(`validation.minVal`,{minVal:0})));return{ObjectHistoryChangeSchema:c,ObjectHistoryRowDTOSchema:l,ObjectHistoryRowSchema:u,ObjectHistoryResponseDTOSchema:e({rows:y(l),total:f}),ObjectHistoryResponseSchema:e({rows:y(u),total:f})}},re=(e,t)=>{let n=a(t.ObjectHistoryResponseDTOSchema,e),r=n.rows.map(e=>({...e,changed_at:new Date(e.changed_at)}));return a(t.ObjectHistoryResponseSchema,{rows:r,total:n.total})},ie=`/object-history`,ae=(e,t=A)=>{let n=ne(t);return{list:async(t,r)=>{let i=new URLSearchParams({object_type:t.objectType.trim(),object_id:String(t.objectId).trim()});return t.from!==void 0&&i.set(`from`,String(t.from)),t.count!==void 0&&i.set(`count`,String(t.count)),re(await e.get(`${ie}?${i.toString()}`,void 0,{signal:r}),n)}}},oe=(t=A)=>{let{DateStringSchema:n,StringSchema:r}=j(t),i=e({name:r,email:r}),a=e({version:r,build_date:r,commit:r,ip:r}),o=e({server_type:r,server_version:r,migration:r});return{ProgAboutAuthorSchema:i,ProgAboutBackendSchema:a,ProgAboutDBSchema:o,ProgAboutDTOSchema:e({name:r,author:i,db:s(o),updated_at:n,backend:a}),ProgAboutSchema:e({name:r,author:i,db:s(o),updated_at:O(t(`validation.required`)),backend:a})}},se=(e,t)=>{let n=a(t.ProgAboutDTOSchema,e);return a(t.ProgAboutSchema,{...n,updated_at:new Date(n.updated_at)})},ce=(e,t=A)=>{let n=oe(t);return{info:async()=>se(await e.get(`/prog-about/info`),n)}},le=(t,a=A)=>{let{IdSchema:s}=j(a),c=s,l=i(f(a(`validation.required`)),r(),n(a(`validation.required`)),u(100,a(`validation.maxLen`,{maxLen:100}))),d=i(f(a(`validation.required`)),n(a(`validation.required`)),u(50,a(`validation.maxLen`,{maxLen:50}))),p={id:c,name:l,role_id:t},m=e(p),h=e({id:c}),g={name:l,role_id:t,pwd:d},_=e(g),v=o(_);return{UserIdSchema:c,UserNameSchema:l,UserPasswordSchema:d,UserBaseEntries:p,UserBaseSchema:m,UserKeyBaseSchema:h,UserNewBaseEntries:g,UserNewBaseSchema:_,UserUpdBaseSchema:v,UserUpdateBaseSchema:e({key:h,model:v}),UserLoginRequestBaseSchema:e({name:l,pwd:d})}},J=(e,t)=>a(t.UserBaseSchema,e),ue=(e,t,n=A)=>{let r=le(t,n);return T({api:M(e),basePath:`/users`,serviceName:`User`,getKeyValue:e=>e.id,fromListDTO:e=>J(e,r),fromDetailDTO:e=>J(e,r)})},de=(t=A)=>{let{IdSchema:a}=j(t),o=i(f(t(`validation.required`)),r(),n(t(`validation.required`)),u(100,t(`validation.maxLen`,{maxLen:100})));return{UserProfileNameSchema:o,UserProfilePasswordSchema:i(f(t(`validation.required`)),n(t(`validation.required`)),u(50,t(`validation.maxLen`,{maxLen:50}))),UserProfileBaseSchema:e({id:a,name:o})}},Y=(e,t)=>{let n=a(t.UserProfileBaseSchema,e);return{...typeof e==`object`&&e&&!Array.isArray(e)?e:{},...n}},X=`/users/me`,fe=(e,t=A)=>{let n=de(t);return{getCurrent:async()=>Y(await e.get(X),n),updateCurrent:async t=>Y(await e.patch(X,t),n),changePassword:async t=>{await e.patch(`${X}/password`,t)}}},pe=`main-menu-changed`,Z=Symbol(`vue-business-app`),me=e=>{let t=e.translate??A,n=e.roles?.schema??f(),r=e.roles?.options??[];return{config:e,roleOptions:r,defaultRoleId:e.roles?.defaultRoleId??r[0]?.value??null,mainMenuChangedEventName:e.mainMenuChangedEventName??pe,apis:{applicationRoute:L(e.api,t),mainMenu:q(e.api,n,t),objectHistory:ae(e.api,t),progAbout:ce(e.api,t),user:ue(e.api,n,t),userProfile:fe(e.api,t)}}},he=e=>{let t=me(e);return{install:e=>{e.provide(Z,t)}}},ge=()=>{let e=S(Z,null);if(e===null)throw Error(`@katren/vue-business-app is not configured. Install createBusinessApp(...) on the Vue application first.`);return e},_e={en:{common:{yes:`Yes`,no:`No`,user:`User`,activeSession:`Active session`},commands:{refresh:`Refresh`,edit:`Edit`,search:`Search`,clear:`Clear`,save:`Save`,cancel:`Cancel`,close:`Close`},loading:`Loading...`,errors:{required:`Required`},menu:{searchPlaceholder:`Quick search`,sectionTitle:`Menu`,empty:`Nothing found`,constructor:`Menu constructor`,profile:`My profile`,allRoutes:`All forms`,about:`About`,logout:`Sign out`,open:`Open menu`},userProfile:{title:`My profile`,subtitle:`Change your profile information and password`,sections:{profile:`Profile`,password:`Password`},fields:{name:`User name`,newPassword:`New password`,passwordConfirmation:`Confirm new password`},passwordHelp:`Leave the password fields empty unless you want to change the password.`,actions:{changePassword:`Change password`},messages:{saved:`Profile saved`,passwordChanged:`Password changed`},errors:{notLoaded:`User profile is not loaded`,nameRequired:`User name is required`,nameTooLong:`User name must not exceed 100 characters`,passwordRequired:`Enter a new password`,passwordTooLong:`Password must not exceed 50 characters`,passwordMismatch:`Password confirmation does not match`}},mainMenu:{title:`Menu constructor`,subtitle:`Manage menus for roles and individual users`,tree:`Menu structure`,root:`Root level`,empty:`No menu has been created for the selected owner`,selectOwner:`Select a role or user`,itemCount:`Items: {count}`,selected:`Selected item: {caption}`,routePlaceholder:`Start typing a form description`,routeHelp:`Select a form from the complete route registry. Caption and icon are filled automatically and can then be changed. Leave it empty for a group item.`,confirmDelete:`Delete item “{caption}”?`,confirmDeleteTree:`Delete item “{caption}” and all its children?`,deleteTitle:`Delete menu item`,dragHelp:`Drag an item's label to reorder it. Drop in the middle of a folder to move inside it.`,dropAtRoot:`Drop here to move to the root level`,owner:{role:`Role menu`,user:`User menu`},fields:{ownerType:`Owner type`,roleId:`Role`,userId:`User`,parentId:`Parent item`,caption:`Caption`,route:`Form`,icon:`PrimeIcons icon`,sortOrder:`Order`,isActive:`Active`},form:{create:`New menu item`,edit:`Edit menu item`},actions:{addRoot:`Add root item`},errors:{ownerRequired:`Select a menu owner`},treeNode:{disabled:`Disabled`,group:`Menu group`,expand:`Expand`,collapse:`Collapse`,drag:`Drag to move`,moveUp:`Move up`,moveDown:`Move down`,addChild:`Add child item`,edit:`Edit`,delete:`Delete`}},applicationRoute:{title:`All forms`,subtitle:`Routes come from the frontend manifest and are added to the registry by synchronization`,search:`Search`,searchPlaceholder:`Description, technical name, path or section`,allSections:`All sections`,filters:{menuAvailableOnly:`Only forms available for menus`},fields:{name:`Route name`,path:`Path`,descr:`Description`,section:`Section`,icon:`PrimeIcons icon`,menuAvailable:`Available for menu`,isActive:`Present in application`},actions:{sync:`Synchronize`},form:{edit:`Edit form description`}},objectHistory:{title:`Object change history`,empty:`There is no change history for this object`,objectKeyRequired:`Object type and ID are required`,noVisibleChanges:`There are no displayable field changes`,fields:{changedAt:`Date and time`,operation:`Operation`,user:`User`},changeFields:{field:`Field`,old:`Before`,new:`After`},operations:{insert:`Created`,update:`Changed`,delete:`Deleted`}},progAbout:{title:`About`,loading:`Loading application information...`,loadError:`Could not load application information`,databaseUnavailable:`Database information is unavailable`,sections:{program:`Application`,author:`Author`,backend:`Application server`,database:`Database`},fields:{name:`Name`,updatedAt:`Updated`,authorName:`Name`,authorEmail:`Email`,backendVersion:`Version`,buildDate:`Build date`,commit:`Commit`,ip:`IP address`,serverType:`Server type`,serverVersion:`Server version`,migration:`Migration`},actions:{retry:`Retry`}}},ru:{common:{yes:`Да`,no:`Нет`,user:`Пользователь`,activeSession:`Активная сессия`},commands:{refresh:`Обновить`,edit:`Изменить`,search:`Поиск`,clear:`Очистить`,save:`Сохранить`,cancel:`Отмена`,close:`Закрыть`},loading:`Загрузка...`,errors:{required:`Обязательное поле`},menu:{searchPlaceholder:`Быстрый поиск`,sectionTitle:`Меню`,empty:`Ничего не найдено`,constructor:`Конструктор меню`,profile:`Мой профиль`,allRoutes:`Все формы`,about:`О программе`,logout:`Выйти`,open:`Открыть меню`},userProfile:{title:`Мой профиль`,subtitle:`Изменение данных текущего пользователя и пароля`,sections:{profile:`Профиль`,password:`Пароль`},fields:{name:`Имя пользователя`,newPassword:`Новый пароль`,passwordConfirmation:`Подтверждение нового пароля`},passwordHelp:`Оставьте поля пароля пустыми, если пароль менять не нужно.`,actions:{changePassword:`Изменить пароль`},messages:{saved:`Профиль сохранён`,passwordChanged:`Пароль изменён`},errors:{notLoaded:`Профиль пользователя не загружен`,nameRequired:`Имя пользователя обязательно`,nameTooLong:`Имя пользователя не должно превышать 100 символов`,passwordRequired:`Введите новый пароль`,passwordTooLong:`Пароль не должен превышать 50 символов`,passwordMismatch:`Подтверждение пароля не совпадает`}},mainMenu:{title:`Конструктор меню`,subtitle:`Управление меню ролей и отдельных пользователей`,tree:`Структура меню`,root:`Корневой уровень`,empty:`Для выбранного владельца меню пока не создано`,selectOwner:`Выберите роль или пользователя`,itemCount:`Пунктов: {count}`,selected:`Выбран пункт: {caption}`,routePlaceholder:`Начните вводить описание формы`,routeHelp:`Выберите форму из полного реестра. Наименование и иконка будут заполнены автоматически, после чего их можно изменить. Оставьте поле пустым для пункта-группы.`,confirmDelete:`Удалить пункт «{caption}»?`,confirmDeleteTree:`Удалить пункт «{caption}» и все его дочерние пункты?`,deleteTitle:`Удаление пункта меню`,dragHelp:`Перетащите название пункта, чтобы изменить порядок. Поместите его в середину папки, чтобы перенести внутрь неё.`,dropAtRoot:`Перетащите сюда, чтобы перенести на корневой уровень`,owner:{role:`Меню роли`,user:`Меню пользователя`},fields:{ownerType:`Тип владельца`,roleId:`Роль`,userId:`Пользователь`,parentId:`Родительский пункт`,caption:`Наименование`,route:`Форма`,icon:`Иконка PrimeIcons`,sortOrder:`Порядок`,isActive:`Активен`},form:{create:`Новый пункт меню`,edit:`Изменение пункта меню`},actions:{addRoot:`Добавить корневой пункт`},errors:{ownerRequired:`Необходимо выбрать владельца меню`},treeNode:{disabled:`Выключен`,group:`Группа меню`,expand:`Развернуть`,collapse:`Свернуть`,drag:`Перетащить пункт`,moveUp:`Переместить вверх`,moveDown:`Переместить вниз`,addChild:`Добавить дочерний пункт`,edit:`Изменить`,delete:`Удалить`}},applicationRoute:{title:`Все формы`,subtitle:`Маршруты задаются во frontend-манифесте и добавляются в реестр кнопкой «Синхронизировать»`,search:`Поиск`,searchPlaceholder:`Описание, техническое имя, путь или раздел`,allSections:`Все разделы`,filters:{menuAvailableOnly:`Только формы, доступные для меню`},fields:{name:`Имя маршрута`,path:`Путь`,descr:`Описание`,section:`Раздел`,icon:`Иконка PrimeIcons`,menuAvailable:`Доступен для меню`,isActive:`Есть в приложении`},actions:{sync:`Синхронизировать`},form:{edit:`Изменение описания формы`}},objectHistory:{title:`История изменений объекта`,empty:`История изменений объекта отсутствует`,objectKeyRequired:`Необходимо указать тип и идентификатор объекта`,noVisibleChanges:`Нет изменений полей для отображения`,fields:{changedAt:`Дата и время`,operation:`Операция`,user:`Пользователь`},changeFields:{field:`Поле`,old:`Было`,new:`Стало`},operations:{insert:`Создание`,update:`Изменение`,delete:`Удаление`}},progAbout:{title:`О программе`,loading:`Загрузка информации...`,loadError:`Не удалось получить информацию о программе`,databaseUnavailable:`Информация о базе данных недоступна`,sections:{program:`Программа`,author:`Автор`,backend:`Сервер приложения`,database:`База данных`},fields:{name:`Наименование`,updatedAt:`Обновлено`,authorName:`Имя`,authorEmail:`Email`,backendVersion:`Версия`,buildDate:`Дата сборки`,commit:`Commit`,ip:`IP-адрес`,serverType:`Тип сервера`,serverVersion:`Версия сервера`,migration:`Миграция`},actions:{retry:`Повторить`}}}},Q=()=>w({useScope:`local`,inheritLocale:!0,messages:_e}),ve=c.extend({name:`toggleswitch`,style:`
+    .p-toggleswitch {
+        display: inline-block;
+        width: dt('toggleswitch.width');
+        height: dt('toggleswitch.height');
+    }
+
+    .p-toggleswitch-input {
+        cursor: pointer;
+        appearance: none;
+        position: absolute;
+        top: 0;
+        inset-inline-start: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        z-index: 1;
+        outline: 0 none;
+        border-radius: dt('toggleswitch.border.radius');
+    }
+
+    .p-toggleswitch-slider {
+        cursor: pointer;
+        width: 100%;
+        height: 100%;
+        border-width: dt('toggleswitch.border.width');
+        border-style: solid;
+        border-color: dt('toggleswitch.border.color');
+        background: dt('toggleswitch.background');
+        transition:
+            background dt('toggleswitch.transition.duration'),
+            color dt('toggleswitch.transition.duration'),
+            border-color dt('toggleswitch.transition.duration'),
+            outline-color dt('toggleswitch.transition.duration'),
+            box-shadow dt('toggleswitch.transition.duration');
+        border-radius: dt('toggleswitch.border.radius');
+        outline-color: transparent;
+        box-shadow: dt('toggleswitch.shadow');
+    }
+
+    .p-toggleswitch-handle {
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: dt('toggleswitch.handle.background');
+        color: dt('toggleswitch.handle.color');
+        width: dt('toggleswitch.handle.size');
+        height: dt('toggleswitch.handle.size');
+        inset-inline-start: dt('toggleswitch.gap');
+        margin-block-start: calc(-1 * calc(dt('toggleswitch.handle.size') / 2));
+        border-radius: dt('toggleswitch.handle.border.radius');
+        transition:
+            background dt('toggleswitch.transition.duration'),
+            color dt('toggleswitch.transition.duration'),
+            inset-inline-start dt('toggleswitch.slide.duration'),
+            box-shadow dt('toggleswitch.slide.duration');
+    }
+
+    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-slider {
+        background: dt('toggleswitch.checked.background');
+        border-color: dt('toggleswitch.checked.border.color');
+    }
+
+    .p-toggleswitch.p-toggleswitch-checked .p-toggleswitch-handle {
+        background: dt('toggleswitch.handle.checked.background');
+        color: dt('toggleswitch.handle.checked.color');
+        inset-inline-start: calc(dt('toggleswitch.width') - calc(dt('toggleswitch.handle.size') + dt('toggleswitch.gap')));
+    }
+
+    .p-toggleswitch:not(.p-disabled):has(.p-toggleswitch-input:hover) .p-toggleswitch-slider {
+        background: dt('toggleswitch.hover.background');
+        border-color: dt('toggleswitch.hover.border.color');
+    }
+
+    .p-toggleswitch:not(.p-disabled):has(.p-toggleswitch-input:hover) .p-toggleswitch-handle {
+        background: dt('toggleswitch.handle.hover.background');
+        color: dt('toggleswitch.handle.hover.color');
+    }
+
+    .p-toggleswitch:not(.p-disabled):has(.p-toggleswitch-input:hover).p-toggleswitch-checked .p-toggleswitch-slider {
+        background: dt('toggleswitch.checked.hover.background');
+        border-color: dt('toggleswitch.checked.hover.border.color');
+    }
+
+    .p-toggleswitch:not(.p-disabled):has(.p-toggleswitch-input:hover).p-toggleswitch-checked .p-toggleswitch-handle {
+        background: dt('toggleswitch.handle.checked.hover.background');
+        color: dt('toggleswitch.handle.checked.hover.color');
+    }
+
+    .p-toggleswitch:not(.p-disabled):has(.p-toggleswitch-input:focus-visible) .p-toggleswitch-slider {
+        box-shadow: dt('toggleswitch.focus.ring.shadow');
+        outline: dt('toggleswitch.focus.ring.width') dt('toggleswitch.focus.ring.style') dt('toggleswitch.focus.ring.color');
+        outline-offset: dt('toggleswitch.focus.ring.offset');
+    }
+
+    .p-toggleswitch.p-invalid > .p-toggleswitch-slider {
+        border-color: dt('toggleswitch.invalid.border.color');
+    }
+
+    .p-toggleswitch.p-disabled {
+        opacity: 1;
+    }
+
+    .p-toggleswitch.p-disabled .p-toggleswitch-slider {
+        background: dt('toggleswitch.disabled.background');
+    }
+
+    .p-toggleswitch.p-disabled .p-toggleswitch-handle {
+        background: dt('toggleswitch.handle.disabled.background');
+    }
+`,classes:{root:function(e){var t=e.instance,n=e.props;return[`p-toggleswitch p-component`,{"p-toggleswitch-checked":t.checked,"p-disabled":n.disabled,"p-invalid":t.$invalid}]},input:`p-toggleswitch-input`,slider:`p-toggleswitch-slider`,handle:`p-toggleswitch-handle`},inlineStyles:{root:{position:`relative`}}}),$={name:`ToggleSwitch`,extends:{name:`BaseToggleSwitch`,extends:t,props:{trueValue:{type:null,default:!0},falseValue:{type:null,default:!1},readonly:{type:Boolean,default:!1},tabindex:{type:Number,default:null},inputId:{type:String,default:null},inputClass:{type:[String,Object],default:null},inputStyle:{type:Object,default:null},ariaLabelledby:{type:String,default:null},ariaLabel:{type:String,default:null}},style:ve,provide:function(){return{$pcToggleSwitch:this,$parentInstance:this}}},inheritAttrs:!1,emits:[`change`,`focus`,`blur`],methods:{getPTOptions:function(e){return(e===`root`?this.ptmi:this.ptm)(e,{context:{checked:this.checked,disabled:this.disabled}})},onChange:function(e){if(!this.disabled&&!this.readonly){var t=this.checked?this.falseValue:this.trueValue;this.writeValue(t,e),this.$emit(`change`,e)}},onFocus:function(e){this.$emit(`focus`,e)},onBlur:function(e){var t,n;this.$emit(`blur`,e),(t=(n=this.formField).onBlur)==null||t.call(n,e)}},computed:{checked:function(){return this.d_value===this.trueValue},dataP:function(){return m({checked:this.checked,disabled:this.disabled,invalid:this.$invalid})}}},ye=[`data-p-checked`,`data-p-disabled`,`data-p`],be=[`id`,`checked`,`tabindex`,`disabled`,`readonly`,`aria-checked`,`aria-labelledby`,`aria-label`,`aria-invalid`],xe=[`data-p`],Se=[`data-p`];function Ce(e,t,n,r,i,a){return C(),E(`div`,D({class:e.cx(`root`),style:e.sx(`root`)},a.getPTOptions(`root`),{"data-p-checked":a.checked,"data-p-disabled":e.disabled,"data-p":a.dataP}),[_(`input`,D({id:e.inputId,type:`checkbox`,role:`switch`,class:[e.cx(`input`),e.inputClass],style:e.inputStyle,checked:a.checked,tabindex:e.tabindex,disabled:e.disabled,readonly:e.readonly,"aria-checked":a.checked,"aria-labelledby":e.ariaLabelledby,"aria-label":e.ariaLabel,"aria-invalid":e.invalid||void 0,onFocus:t[0]||=function(){return a.onFocus&&a.onFocus.apply(a,arguments)},onBlur:t[1]||=function(){return a.onBlur&&a.onBlur.apply(a,arguments)},onChange:t[2]||=function(){return a.onChange&&a.onChange.apply(a,arguments)}},a.getPTOptions(`input`)),null,16,be),_(`div`,D({class:e.cx(`slider`)},a.getPTOptions(`slider`),{"data-p":a.dataP}),[_(`div`,D({class:e.cx(`handle`)},a.getPTOptions(`handle`),{"data-p":a.dataP}),[h(e.$slots,`handle`,{checked:a.checked})],16,Se)],16,xe)],16,ye)}$.render=Ce;export{q as a,H as c,L as d,P as f,ge as i,U as l,N as m,Q as n,V as o,F as p,he as r,W as s,$ as t,G as u};

@@ -1,0 +1,1 @@
+import{an as e,en as t,mn as n,on as r,rn as i}from"./src-FBo9u_Ll.js";import{t as a}from"./PaymentAttemptsGrid-Dni6Z404.js";var o={class:`py-4`},s=r({__name:`PaymentAttemptList`,setup(r){return(r,s)=>(n(),i(`section`,o,[s[0]||=t(`h1`,{class:`mb-4 text-2xl font-semibold`},`Попытки оплаты`,-1),e(a)]))}});export{s as default};

@@ -1,0 +1,209 @@
+{
+	"Company": {
+		"title": "Компании YClients",
+		"fields": {
+			"id": "ID компании YClients",
+			"name": "Наименование"
+		},
+		"form": {
+			"create": "Новая компания",
+			"edit": "Компания",
+			"copy": "Копия компании"
+		}
+	},
+	"FiscalProfile": {
+		"title": "Фискальные профили",
+		"fields": {
+			"bearer_token_env": "Переменная окружения для токена ККТ",
+			"cashier_inn": "ИНН кассира",
+			"cashier_name": "Кассир",
+			"company_id": "Компания",
+			"created_at": "Создан",
+			"device_id": "Устройство ККТ",
+			"driver_base_url": "Адрес сервиса ККТ",
+			"enabled": "Активен",
+			"good_vat_rate": "НДС товаров",
+			"id": "ID",
+			"internet_payment": "Расчёт в интернете",
+			"mode": "Режим",
+			"name": "Наименование",
+			"payment_method": "Признак способа расчёта",
+			"service_vat_rate": "НДС услуг",
+			"settlement_address": "Адрес расчётов",
+			"settlement_place": "Место расчётов",
+			"suppress_print": "Без печати",
+			"tax_system": "Система налогообложения",
+			"timeout_seconds": "Тайм-аут, с",
+			"updated_at": "Изменён"
+		},
+		"form": {
+			"create": "Новый фискальный профиль",
+			"edit": "Фискальный профиль",
+			"copy": "Копия фискального профиля"
+		}
+	},
+	"Kiosk": {
+		"title": "Киоски",
+		"fields": {
+			"company_id": "Компания",
+			"created_at": "Создан",
+			"fiscal_profile_id": "Фискальный профиль",
+			"id": "ID",
+			"is_active": "Активен",
+			"name": "Наименование",
+			"payment_profile_id": "Платёжный профиль",
+			"session_version": "Версия сессии",
+			"updated_at": "Изменён",
+			"yclients_profile_id": "Профиль YClients"
+		},
+		"form": {
+			"create": "Новый киоск",
+			"edit": "Настройки киоска",
+			"copy": "Киоски"
+		}
+	},
+	"PaymentAttempt": {
+		"title": "Попытки оплаты",
+		"fields": {
+			"amount_kopecks": "Сумма",
+			"bank_reference": "Номер операции",
+			"created_at": "Создана",
+			"environment": "Среда",
+			"id": "Оплата",
+			"method": "Способ",
+			"order_id": "Заказ",
+			"paid_at": "Оплачена",
+			"salon_name": "Салон",
+			"state": "Статус"
+		},
+		"form": {
+			"create": "Попытки оплаты",
+			"edit": "Попытки оплаты",
+			"copy": "Попытки оплаты"
+		}
+	},
+	"PaymentEvent": {
+		"title": "События оплаты",
+		"fields": {
+			"environment": "Среда",
+			"event_type": "Событие",
+			"order_id": "Заказ",
+			"payment_id": "Оплата",
+			"processing_error": "Ошибка",
+			"processing_state": "Обработка",
+			"received_at": "Получено",
+			"signature_verified": "Подпись",
+			"source": "Источник"
+		},
+		"form": {
+			"create": "События оплаты",
+			"edit": "События оплаты",
+			"copy": "События оплаты"
+		}
+	},
+	"PaymentOrder": {
+		"title": "Заказы на оплату",
+		"fields": {
+			"created_at": "Создан",
+			"environment": "Среда",
+			"fiscal_status": "Чек",
+			"id": "Номер заказа",
+			"kiosk_name": "Источник",
+			"payable_kopecks": "К оплате",
+			"payment_state": "Оплата",
+			"salon_name": "Салон",
+			"state": "Статус заказа",
+			"yclients_sync_status": "YClients"
+		},
+		"form": {
+			"create": "Заказы на оплату",
+			"edit": "Заказы на оплату",
+			"copy": "Заказы на оплату"
+		}
+	},
+	"PaymentProfile": {
+		"title": "Платёжные профили",
+		"fields": {
+			"account_id": "Номер счёта",
+			"acquiring_merchant_id": "ТСП эквайринга",
+			"api_base_url": "URL API Точки",
+			"card_fail_redirect_url": "URL при ошибке оплаты картой",
+			"card_redirect_url": "URL после оплаты картой",
+			"card_ttl_minutes": "Срок оплаты картой, мин.",
+			"cards_enabled": "Оплата картой",
+			"client_id": "Идентификатор клиента API",
+			"company_id": "Компания",
+			"config_version": "Версия настроек",
+			"created_at": "Создан",
+			"customer_code": "Код компании в Точке",
+			"enabled": "Активен",
+			"environment": "Среда",
+			"http_timeout_seconds": "Тайм-аут HTTP, сек.",
+			"id": "ID",
+			"name": "Наименование",
+			"provider": "Банк",
+			"qr_ttl_minutes": "Срок QR, мин.",
+			"sbp_merchant_id": "ТСП СБП",
+			"updated_at": "Изменён"
+		},
+		"form": {
+			"create": "Новый платёжный профиль",
+			"edit": "Платёжный профиль",
+			"copy": "Платёжные профили"
+		}
+	},
+	"Salon": {
+		"title": "Салоны",
+		"fields": {
+			"company_id": "ID компании YClients",
+			"created_at": "Создан",
+			"default_fiscal_profile_id": "Фискальный профиль по умолчанию",
+			"default_payment_profile_id": "Платёжный профиль по умолчанию",
+			"default_yclients_profile_id": "Профиль YClients по умолчанию",
+			"is_active": "Активен",
+			"name": "Наименование",
+			"session_version": "Версия сессии",
+			"slug": "Код в адресе сайта",
+			"sort_order": "Порядок отображения",
+			"updated_at": "Изменён"
+		},
+		"form": {
+			"create": "Новый салон",
+			"edit": "Салон",
+			"copy": "Копия салона"
+		}
+	},
+	"YClientsProfile": {
+		"title": "Профили YClients",
+		"fields": {
+			"cashless_account_id": "ID безналичной кассы",
+			"company_id": "Компания",
+			"enabled": "Активен",
+			"id": "ID",
+			"mode": "Режим",
+			"name": "Наименование",
+			"service_income_expense_id": "ID статьи доходов",
+			"service_policy": "Оплата услуги без визита",
+			"storage_id": "ID склада",
+			"updated_at": "Изменён"
+		},
+		"form": {
+			"create": "Профили YClients",
+			"edit": "Профили YClients",
+			"copy": "Профили YClients"
+		}
+	},
+	"CatalogueExecutionMode": {
+		"demo": "Демо",
+		"live": "Рабочий"
+	},
+	"PaymentProfileEnvironment": {
+		"mock": "Имитация",
+		"sandbox": "Песочница",
+		"production": "Рабочая среда"
+	},
+	"YClientsServicePolicy": {
+		"require_visit": "Требовать визит",
+		"financial_income": "Финансовое поступление"
+	}
+}

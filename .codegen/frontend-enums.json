@@ -1,0 +1,11 @@
+{
+	"version": 1,
+	"files": [
+		"src/types/enums/catalogueExecutionMode.gen.ts",
+		"src/schemas/enums/catalogueExecutionMode.gen.ts",
+		"src/types/enums/paymentProfileEnvironment.gen.ts",
+		"src/schemas/enums/paymentProfileEnvironment.gen.ts",
+		"src/types/enums/yClientsServicePolicy.gen.ts",
+		"src/schemas/enums/yClientsServicePolicy.gen.ts"
+	]
+}

@@ -1,0 +1,49 @@
+{
+	"name": "pronogti-admin",
+	"private": true,
+	"version": "0.1.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vue-tsc -b && vite build",
+		"preview": "vite preview",
+		"build-only": "vite build",
+		"type-check": "vue-tsc --build",
+		"test": "node --import tsx --test tests/*.test.ts",
+		"format": "prettier --write src/ tests/"
+	},
+	"dependencies": {
+		"@katren/vue-business-app": "file:../../packages/vue-business-app",
+		"@katren/vue-collection-lib": "file:../../packages/vue-collection-lib",
+		"@primeuix/themes": "^2.0.3",
+		"pinia": "^3.0.4",
+		"primeicons": "^7.0.0",
+		"primelocale": "^2.4.0",
+		"primevue": "^4.5.5",
+		"valibot": "^1.4.1",
+		"vue": "^3.5.34",
+		"vue-i18n": "^11.4.5",
+		"vue-router": "^5.1.0"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.17",
+		"@types/node": "^24.13.1",
+		"@vitejs/plugin-vue": "^6.0.6",
+		"@vue/tsconfig": "^0.9.1",
+		"prettier": "3.8.3",
+		"tsx": "^4.21.0",
+		"typescript": "~6.0.2",
+		"vite": "^8.0.12",
+		"vue-tsc": "^3.2.8"
+	},
+	"engines": {
+		"node": ">=22.12.0"
+	},
+	"prettier": {
+		"useTabs": true,
+		"tabWidth": 8,
+		"semi": true,
+		"singleQuote": false,
+		"trailingComma": "all"
+	}
+}

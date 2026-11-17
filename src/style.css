@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@source "../../../packages/vue-business-app/src";
+@source "../../../packages/vue-collection-lib/src";
+@source "../node_modules/@katren/vue-business-app/src";
+@source "../node_modules/@katren/vue-collection-lib/src";
+
+:root {
+	color-scheme: light;
+	font-synthesis: none;
+}
+
+html,
+body,
+#app {
+	min-height: 100%;
+}
+
+body {
+	margin: 0;
+	background: rgb(241 245 249);
+	color: rgb(15 23 42);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+	background: rgb(165 243 252);
+	color: rgb(22 78 99);
+}
